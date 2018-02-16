@@ -17,12 +17,12 @@ class ExampleTest extends DuskTestCase
     {
         $this->browse(function (Browser $browser) {
             $browser->visit('/')
-                    ->assertSee('Laravel')
-                    ->click('#clickme')
-                    ->assertUrlIs('https://laravel.com/docs/5.6')
-                    ->type('#search-input', 'eloquent')
-                    ->pause(2000)
-                    ->screenshot('Eloquent docs');
+                    ->assertSee('Laravel');
+                    // ->click('#clickme')
+                    // ->assertUrlIs('https://laravel.com/docs/5.6')
+                    // ->type('#search-input', 'eloquent')
+                    // ->pause(2000)
+                    // ->screenshot('Eloquent docs');
         });
     }
 }
