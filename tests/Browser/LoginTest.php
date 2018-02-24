@@ -12,11 +12,31 @@ class LoginTest extends DuskTestCase
     use DatabaseMigrations;
 
     /**
-     * A Dusk test example.
+     * Test for wrong credentials
      *
      * @return void
      */
-    public function testLogin()
+    public function testLoginWithWrongCredentials()
+    {
+        $user = factory(User::class)->create(['password' => bcrypt('secret')]);
+
+        $this->browse(function (Browser $browser) use ($user) {
+            $browser->visit('/login')
+                    ->assertSee('E-Mail Address')
+                    ->assertSee('Password')
+                    ->type('email', $user->email)
+                    ->type('password', 'wrong password')
+                    ->press('Login')
+                    ->assertDontSee('You are logged in!');
+        });
+    }
+
+    /**
+     * Test for valid credentials
+     *
+     * @return void
+     */
+    public function testLoginWithValidCredentials()
     {
         $user = factory(User::class)->create(['password' => bcrypt('secret')]);
 
