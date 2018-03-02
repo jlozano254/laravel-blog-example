@@ -14,7 +14,27 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    <table id='posts-list'>
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Title</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($posts as $post)
+                            <tr>
+                                <td>{{ $post->id }}</td>
+                                <td>{{{ $post->title }}}</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="2">{{ $posts->links() }}</td>
+                            </tr>
+                        </tfoot>
+                    </table>
                 </div>
             </div>
         </div>
