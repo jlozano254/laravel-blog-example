@@ -9,7 +9,7 @@ use Illuminate\Foundation\Testing\DatabaseMigrations;
 class HomeTest extends DuskTestCase
 {
     /**
-     * A Dusk test example.
+     * Test home page
      *
      * @return void
      */

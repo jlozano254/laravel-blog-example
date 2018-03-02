@@ -12,11 +12,11 @@ class DashboardTest extends DuskTestCase
     use DatabaseMigrations;
 
     /**
-     * A Dusk test example.
+     * Test dashboard page
      *
      * @return void
      */
-    public function testExample()
+    public function testDashboardPage()
     {
         $user = factory(User::class)->create();
 
