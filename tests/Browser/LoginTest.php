@@ -27,7 +27,7 @@ class LoginTest extends DuskTestCase
                     ->type('email', $user->email)
                     ->type('password', 'wrong password')
                     ->press('Login')
-                    ->assertDontSee('You are logged in!');
+                    ->assertSee('These credentials do not match our records.');
         });
     }
 
