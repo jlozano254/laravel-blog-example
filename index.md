@@ -7,6 +7,10 @@
 - Factories
 - Configs
 - Testing introduction
+- Testing on isolation using sqlite db
 - Working with forks
 - Workflows
 - Repository sync
+- Test driven development flow
+- Traditional development flow (UI, UX)
+- Pagination
