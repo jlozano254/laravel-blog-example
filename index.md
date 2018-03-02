@@ -7,3 +7,6 @@
 - Factories
 - Configs
 - Testing introduction
+- Working with forks
+- Workflows
+- Repository sync
