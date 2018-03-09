@@ -14,3 +14,8 @@
 - Test driven development flow
 - Traditional development flow (UI, UX)
 - Pagination
+- How to test model relations
+- Model relations
+- Eloquent
+- Collections
+- Tinker as a debug option
