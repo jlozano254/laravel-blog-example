@@ -47,7 +47,7 @@ class LoginTest extends DuskTestCase
                     ->type('email', $user->email)
                     ->type('password', 'secret')
                     ->press('Login')
-                    ->assertSee('You are logged in!');
+                    ->assertSee($user->name);
         });
     }
 }

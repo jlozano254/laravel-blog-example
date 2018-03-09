@@ -27,7 +27,6 @@ class DashboardTest extends DuskTestCase
         $this->browse(function (Browser $browser) use ($user) {
             $browser->loginAs($user)
                     ->visit('/home')
-                    ->assertSee('You are logged in!')
                     ->assertSee($user->name);
         });
     }
