@@ -39,14 +39,17 @@ class DashboardTest extends DuskTestCase
     public function testPostsListInDashboardPage()
     {
         $user = factory(User::class)->create();
+        $user_2 = factory(User::class)->create();
 
-        $posts = factory(Post::class, 20)->create();
+        $other_user_posts = factory(Post::class, 50)->create(['user_id' => $user_2->id]);
+
+        $posts = factory(Post::class, 10)->create(['user_id' => $user->id]);
 
         $this->browse(function (Browser $browser) use ($user, $posts) {
             $browser->loginAs($user)
                     ->visit(new DashboardPage())
                     ->waitFor('@posts')
-                    ->assertSeePosts($posts)
+                    ->assertSeePosts($posts, $user)
                     ->screenshot('dashboard-ok');
         });
     }

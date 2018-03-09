@@ -5,6 +5,8 @@ namespace Tests\Browser\Pages;
 use Laravel\Dusk\Browser;
 use Laravel\Dusk\Page as BasePage;
 
+use App\User;
+
 class DashboardPage extends BasePage
 {
     /**
@@ -33,9 +35,10 @@ class DashboardPage extends BasePage
      *
      * @param  Browser  $browser
      * @param  collection|array|mixed  $browser
+     * @param  App\User  $user
      * @return void
      */
-    public function assertSeePosts(Browser $browser, $posts)
+    public function assertSeePosts(Browser $browser, $posts, User $user)
     {
         $segments = ceil($posts->count() / 10);
 
@@ -44,8 +47,11 @@ class DashboardPage extends BasePage
             for ($segment = 1; $segment <= $segments; $segment++)
             {
                 $browser->visit(route('home', ['page' => $segment]))
-                        ->assertSeePostsSegment($posts->forPage($segment, $segment * 10));
+                        ->assertSeePostsSegment($posts->forPage($segment, $segment * 10), $user);
             }
+        }
+        else {
+            $browser->assertSeePostsSegment($posts, $user);
         }
     }
 
@@ -54,17 +60,16 @@ class DashboardPage extends BasePage
      *
      * @param  Browser  $browser
      * @param  collection|array|mixed  $browser
+     * @param  App\User  $user
      * @return void
      */
-    public function assertSeePostsSegment(Browser $browser, $posts)
+    public function assertSeePostsSegment(Browser $browser, $posts, User $user)
     {
-        $posts->each(function ($post) use ($browser, $posts) {
+        $posts->each(function ($post) use ($browser, $posts, $user) {
             $browser->assertSee($post->id)
                     ->assertSee($post->title);
         });
     }
-
-
 
     /**
      * Get the element shortcuts for the page.
