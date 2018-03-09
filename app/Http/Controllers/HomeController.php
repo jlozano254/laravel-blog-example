@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Post;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -25,7 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $posts = Post::paginate(10);
+        $posts = Auth::user()->posts()->paginate(10);
         return view('home', compact('posts'));
     }
 }
