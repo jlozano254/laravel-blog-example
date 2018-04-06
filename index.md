@@ -19,3 +19,6 @@
 - Eloquent
 - Collections
 - Tinker as a debug option
+- Laravel debug bar
+- Single Responsibility Principle
+- Laravel log system
