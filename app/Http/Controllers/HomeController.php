@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use Auth;
+use App\Post;
 
 class HomeController extends Controller
 {
@@ -19,13 +20,13 @@ class HomeController extends Controller
     }
 
     /**
-     * Show the application dashboard.
+     * Show the authenticated user posts
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $posts = Auth::user()->posts()->paginate(10);
+        $posts = Auth::user()->posts()->paginate(Post::TAKE);
         return view('home', compact('posts'));
     }
 }
