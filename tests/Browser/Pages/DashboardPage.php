@@ -68,7 +68,7 @@ class DashboardPage extends BasePage
     }
 
     /**
-     * Assert that the page shows posts segment.
+     * Assert that the page dont shows posts segment.
      *
      * @param  Browser  $browser
      * @param  collection  $posts
